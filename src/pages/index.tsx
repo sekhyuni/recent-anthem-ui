@@ -1,17 +1,43 @@
 import Head from 'next/head';
 
-import axios from '~services/index';
-import { useQuery } from '@tanstack/react-query';
+import { useRef, FormEvent } from 'react';
+
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import * as MusicType from '~types/musicType';
+import MusicService from '~services/musicService';
+
+import tw from 'twin.macro';
 
 export default function Home() {
-  useQuery(
-    ['fetchData'],
+  const titleRef = useRef<HTMLInputElement | null>(null);
+
+  const queryClient = useQueryClient();
+
+  const { data, refetch: fetchMusic } = useQuery(
+    ['fetchMusic'],
     () => {
-      return axios.get('/welcome');
+      const params: MusicType.ListRequestType = {
+        title: titleRef.current!.value,
+      };
+      return MusicService.list(params);
     },
     {
-      onSuccess: (data) => {
-        console.log(data);
+      refetchOnWindowFocus: false,
+      onSuccess: (data) => {},
+    }
+  );
+  const { mutate: createMusic } = useMutation(
+    () => {
+      const params: MusicType.CreateRequestType = {
+        title: '선물',
+        artist: '멜로망스(Melomance)',
+        album: 'Moonlight',
+      };
+      return MusicService.create(params);
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(['fetchMusic']);
       },
     }
   );
@@ -24,7 +50,29 @@ export default function Home() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main>This is Main</main>
+      <main css={[tw`flex flex-col items-center`]}>
+        {data?.data?.data?.map(
+          (music: MusicType.ListResponseType['data'][0]) => (
+            <div>{music.title}</div>
+          )
+        )}
+        <form
+          onSubmit={(event: FormEvent<HTMLFormElement>) => {
+            event.preventDefault();
+
+            fetchMusic();
+          }}
+        >
+          <input ref={titleRef} />
+        </form>
+        <button
+          onClick={() => {
+            createMusic();
+          }}
+        >
+          노래 등록
+        </button>
+      </main>
     </>
   );
 }

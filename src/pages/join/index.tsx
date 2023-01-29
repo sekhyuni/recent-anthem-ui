@@ -52,7 +52,7 @@ const Join = () => {
   );
   return (
     <div css={[tw`flex flex-col items-center`]}>
-      <h3>{data?.data?.result?.userId}</h3>
+      <h3>{data?.data?.data?.userId}</h3>
       <button
         onClick={() => {
           createUser();
