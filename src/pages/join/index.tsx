@@ -19,7 +19,7 @@ const Join = () => {
     () => {
       return axios.post('/auth/signup', {
         userId: 'kimseokhyun',
-        password: 'tprgus920912',
+        password: '2081',
       });
     },
     {
@@ -31,8 +31,7 @@ const Join = () => {
   const { mutate: updateUser } = useMutation(
     () => {
       return axios.put('/user/kimseokhyun', {
-        userId: 'kimseokhyun',
-        password: 'tprgus920912',
+        password: '2082',
       });
     },
     {
