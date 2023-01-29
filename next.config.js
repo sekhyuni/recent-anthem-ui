@@ -1,8 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
+  reactStrictMode: true,
+  async rewrites() {
+    return [
+      {
+        source: '/:path*',
+        destination: 'http://localhost:8081/:path*',
+      },
+    ];
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
