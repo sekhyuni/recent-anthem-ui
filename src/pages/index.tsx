@@ -1,45 +1,16 @@
 import Head from 'next/head';
+import tw from 'twin.macro';
 
 import { useRef, FormEvent } from 'react';
 
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMusicQuery } from '~hooks/useMusicQuery';
 import * as MusicType from '~types/musicType';
-import MusicService from '~services/musicService';
-
-import tw from 'twin.macro';
 
 export default function Home() {
   const titleRef = useRef<HTMLInputElement | null>(null);
 
-  const queryClient = useQueryClient();
-
-  const { data, refetch: fetchMusic } = useQuery(
-    ['fetchMusic'],
-    () => {
-      const params: MusicType.ListRequestType = {
-        title: titleRef.current!.value,
-      };
-      return MusicService.list(params);
-    },
-    {
-      refetchOnWindowFocus: false,
-      onSuccess: (data) => {},
-    }
-  );
-  const { mutate: createMusic } = useMutation(
-    () => {
-      const params: MusicType.CreateRequestType = {
-        title: '선물',
-        artist: '멜로망스(Melomance)',
-        album: 'Moonlight',
-      };
-      return MusicService.create(params);
-    },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['fetchMusic']);
-      },
-    }
+  const { data, refetch: fetchMusic } = useMusicQuery(
+    titleRef.current?.value as string
   );
 
   return (
@@ -64,14 +35,8 @@ export default function Home() {
           }}
         >
           <input ref={titleRef} />
+          <input type='submit' hidden />
         </form>
-        <button
-          onClick={() => {
-            createMusic();
-          }}
-        >
-          노래 등록
-        </button>
       </main>
     </>
   );

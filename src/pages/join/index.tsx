@@ -1,7 +1,7 @@
+import tw from 'twin.macro';
+
 import axios from '~services/index';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-
-import tw from 'twin.macro';
 
 const Join = () => {
   const queryClient = useQueryClient();
