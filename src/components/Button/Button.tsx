@@ -1,37 +1,23 @@
-import React from 'react';
 import './button.css';
 
 export interface IButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean;
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   * Button contents
-   */
+  /** Button Contents */
   label: string;
-  /**
-   * Optional click handler
-   */
+  /** Button Size */
+  size?: 'small' | 'medium' | 'large';
+  /** Background Color */
+  backgroundColor?: string;
+  /** Is Primary */
+  primary?: boolean;
+  /** Click Handler */
   onClick?: () => void;
 }
 
-/**
- * Primary UI component for user interaction
- */
 const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
   label,
+  size = 'medium',
+  primary = false,
+  backgroundColor,
   ...rest
 }: IButtonProps) => {
   const mode = primary

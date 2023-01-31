@@ -1,6 +1,6 @@
-import tw from 'twin.macro';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import tw from 'twin.macro';
 
 import { ITabsNavigationProps } from './TabsNavigation';
 
@@ -21,13 +21,6 @@ const normalSizeActive = css`
 const smallSizeActive = css`
   ${tw`text-[16px] tracking-[-.02em] font-bold text-blue-900`}
 `;
-
-export const SpanOfNavigationNameHidden = styled.span<ITabsNavigationNameProps>(
-  ({ size }) => [
-    tw`inline-block tracking-[-.02em] font-normal text-transparent`,
-    size === 'normal' ? normalSize : smallSize,
-  ]
-);
 
 export const SpanOfNavigationName = styled.span<
   ITabsNavigationNameProps & { isActive: boolean }
