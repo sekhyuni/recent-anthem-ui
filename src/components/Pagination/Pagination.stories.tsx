@@ -11,13 +11,11 @@ export const Default = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   return (
-    <div>
-      <Pagination
-        total={120}
-        limit={10}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
-    </div>
+    <Pagination
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
+      total={120}
+      limit={10}
+    />
   );
 };
