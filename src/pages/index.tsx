@@ -1,7 +1,7 @@
-import Head from 'next/head';
 import tw from 'twin.macro';
 
 import { useRef, FormEvent } from 'react';
+import Head from 'next/head';
 
 import { useMusicQuery } from '~hooks/useMusicQuery';
 import * as MusicType from '~types/musicType';
