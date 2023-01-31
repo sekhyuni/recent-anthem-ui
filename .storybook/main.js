@@ -1,3 +1,7 @@
+const path = require('path');
+const PROJECT_ROOT = process.cwd();
+const pathAlias = require('../tsconfig.json').compilerOptions.paths;
+
 module.exports = {
   stories: [
     '../src/components/**/*.stories.@(js|jsx|ts|tsx|mdx)',
@@ -21,6 +25,20 @@ module.exports = {
     },
   ],
   webpackFinal: async (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      ...Object.fromEntries(
+        Object.entries(pathAlias).map(([key, valArr]) => [
+          key.replace('/*', ''),
+          valArr.map((val) =>
+            path.resolve(
+              PROJECT_ROOT,
+              ...val.replace('/*', '').replace('./', '').split('/')
+            )
+          ),
+        ])
+      ),
+    };
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
       loader: require.resolve('babel-loader'),
