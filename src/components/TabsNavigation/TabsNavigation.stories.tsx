@@ -11,11 +11,9 @@ export default {
 
 export const Normal = ({
   listOfItem = [
-    { id: 0, name: '개요', path: 'overview' },
-    { id: 1, name: '데이터', path: 'data' },
-    { id: 2, name: '코드', path: 'codeshare' },
-    { id: 3, name: '포럼 및 댓글', path: 'talkboard' },
-    { id: 4, name: '리더보드', path: 'leaderboard' },
+    { id: 0, name: '축가', path: 'anthem' },
+    { id: 1, name: '친구랑 노래방', path: 'friend' },
+    { id: 2, name: '연인과 노래방', path: 'lover' },
   ],
   size = 'normal',
 }: ITabsNavigationProps) => {

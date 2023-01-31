@@ -13,7 +13,7 @@ export interface ITabsNavigationProps extends React.ComponentProps<'ul'> {
   listOfItem: { id: number; name: string; path: string }[];
   /** Navigation Size */
   size?: 'normal' | 'small';
-  /** Base Path */
+  /** Base Path (It should start with '/') */
   basePath?: string;
   /** Add TwStyle to Component Root */
   twCSS?: TwStyle;
@@ -24,17 +24,23 @@ const TabsNavigation = ({
   setCurrentItemId,
   listOfItem,
   size = 'normal',
-  basePath,
+  basePath = '',
   twCSS,
   ...rest
 }: ITabsNavigationProps): JSX.Element => {
   return (
-    <ul css={[tw`h-[52px] p-0 list-none`, twCSS]} {...rest}>
+    <ul
+      css={[
+        tw`flex flex-row items-center h-[52px] p-0 list-none bg-[#0a0a0a]`,
+        twCSS,
+      ]}
+      {...rest}
+    >
       {listOfItem.map(
         (item): JSX.Element => (
           <li
             css={[
-              tw`relative inline-block h-full cursor-pointer`,
+              tw`cursor-pointer`,
               currentItemId === item.id &&
                 tw`border-b-[3px] border-solid border-blue-800`,
             ]}
@@ -43,12 +49,13 @@ const TabsNavigation = ({
               setCurrentItemId(item.id);
             }}
           >
-            <Link href={`/${basePath}/${item.path}`}>
-              <a css={[tw`relative inline-block h-full px-[30px]`]}>
+            <Link
+              href={`${basePath}/${item.path}`}
+              onClick={(e) => e.preventDefault()}
+            >
+              <a css={[tw`px-[30px]`]}>
                 <S.SpanOfNavigationName
-                  css={[tw`-translate-x-1/2 -translate-y-1/2`]}
                   size={size}
-                  isActive={currentItemId === item.id}
                   aria-selected={currentItemId === item.id}
                 >
                   {item.name}
