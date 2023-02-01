@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   presets: [],
@@ -979,5 +981,20 @@ module.exports = {
     'active',
     'disabled',
   ],
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.a11y-hidden': {
+          overflow: 'hidden',
+          position: 'absolute',
+          width: '1px',
+          height: '1px',
+          margin: '-1px',
+          backgroundColor: 'transparent',
+          clip: 'rect(0, 0, 0, 0)',
+          whiteSpace: 'nowrap',
+        },
+      });
+    }),
+  ],
 };
