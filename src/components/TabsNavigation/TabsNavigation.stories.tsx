@@ -25,14 +25,18 @@ export const Normal = ({
       setCurrentItemId={setCurrentItemId}
       listOfItem={listOfItem}
       size={size}
+      onClick={(event) => {
+        event.preventDefault();
+      }}
     />
   );
 };
 
 export const Small = ({
   listOfItem = [
-    { id: 0, name: '전체', path: '/' },
-    { id: 1, name: '내 글', path: '/private' },
+    { id: 0, name: '축가', path: 'anthem' },
+    { id: 1, name: '친구랑 노래방', path: 'friend' },
+    { id: 2, name: '연인과 노래방', path: 'lover' },
   ],
   size = 'small',
   twCSS = tw`h-[46px]`,
@@ -45,6 +49,34 @@ export const Small = ({
       setCurrentItemId={setCurrentItemId}
       listOfItem={listOfItem}
       size={size}
+      onClick={(event) => {
+        event.preventDefault();
+      }}
+      twCSS={twCSS}
+    />
+  );
+};
+
+export const Transparent = ({
+  listOfItem = [
+    { id: 0, name: '축가', path: 'anthem' },
+    { id: 1, name: '친구랑 노래방', path: 'friend' },
+    { id: 2, name: '연인과 노래방', path: 'lover' },
+  ],
+  size = 'normal',
+  twCSS = tw`bg-transparent`,
+}: ITabsNavigationProps) => {
+  const [currentItemId, setCurrentItemId] = useState<number>(0);
+
+  return (
+    <TabsNavigation
+      currentItemId={currentItemId}
+      setCurrentItemId={setCurrentItemId}
+      listOfItem={listOfItem}
+      size={size}
+      onClick={(event) => {
+        event.preventDefault();
+      }}
       twCSS={twCSS}
     />
   );

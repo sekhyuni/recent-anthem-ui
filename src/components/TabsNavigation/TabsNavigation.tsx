@@ -1,10 +1,9 @@
 import tw, { TwStyle } from 'twin.macro';
-import * as S from './TabsNavigation.styled';
 
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import Link from 'next/link';
 
-export interface ITabsNavigationProps extends React.ComponentProps<'ul'> {
+export interface ITabsNavigationProps {
   /** Active Item Id */
   currentItemId: number;
   /** Set Active Item Id */
@@ -15,6 +14,8 @@ export interface ITabsNavigationProps extends React.ComponentProps<'ul'> {
   size?: 'normal' | 'small';
   /** Base Path (It should start with '/') */
   basePath?: string;
+  /** Click Handler */
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
   /** Add TwStyle to Component Root */
   twCSS?: TwStyle;
 }
@@ -25,13 +26,15 @@ const TabsNavigation = ({
   listOfItem,
   size = 'normal',
   basePath = '',
+  onClick,
   twCSS,
   ...rest
 }: ITabsNavigationProps): JSX.Element => {
   return (
     <ul
       css={[
-        tw`flex flex-row items-center h-[52px] p-0 list-none bg-[#0a0a0a]`,
+        tw`flex flex-row items-center bg-black`,
+        size === 'normal' ? tw`h-[60px]` : tw`h-[42px]`,
         twCSS,
       ]}
       {...rest}
@@ -39,27 +42,26 @@ const TabsNavigation = ({
       {listOfItem.map(
         (item): JSX.Element => (
           <li
-            css={[
-              tw`cursor-pointer`,
-              currentItemId === item.id &&
-                tw`border-b-[3px] border-solid border-blue-800`,
-            ]}
+            css={[tw`cursor-pointer`]}
             key={item.id}
             onClick={() => {
               setCurrentItemId(item.id);
             }}
           >
-            <Link
-              href={`${basePath}/${item.path}`}
-              onClick={(e) => e.preventDefault()}
-            >
-              <a css={[tw`px-[30px]`]}>
-                <S.SpanOfNavigationName
-                  size={size}
+            <Link href={`${basePath}/${item.path}`} passHref legacyBehavior>
+              <a css={[tw`px-[30px]`]} onClick={onClick}>
+                <span
+                  css={[
+                    tw`text-white`,
+                    currentItemId === item.id && tw`text-[#98FB98]`,
+                    size === 'normal'
+                      ? tw`text-[18px] leading-[32px]`
+                      : tw`text-[16px] leading-[26px]`,
+                  ]}
                   aria-selected={currentItemId === item.id}
                 >
                   {item.name}
-                </S.SpanOfNavigationName>
+                </span>
               </a>
             </Link>
           </li>
