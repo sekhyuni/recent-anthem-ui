@@ -10,7 +10,7 @@ const Header = () => {
   const [currentItemId, setCurrentItemId] = useState<number>(0);
 
   return (
-    <header css={[tw`h-[60px]`]}>
+    <header>
       <TabsNavigation
         currentItemId={currentItemId}
         setCurrentItemId={setCurrentItemId}
@@ -19,6 +19,7 @@ const Header = () => {
           { id: 1, name: '친구랑 노래방', path: 'friend' },
           { id: 2, name: '연인과 노래방', path: 'lover' },
         ]}
+        twCSS={tw`h-[60px]`}
       />
     </header>
   );

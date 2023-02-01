@@ -4,7 +4,9 @@ export interface IFooterProps extends React.ComponentProps<'footer'> {}
 
 const Footer = () => {
   return (
-    <footer css={[tw`flex flex-row justify-center`]}>This is Footer</footer>
+    <footer css={[tw`flex flex-row justify-center h-[100px]`]}>
+      This is Footer
+    </footer>
   );
 };
 
