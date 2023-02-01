@@ -1,5 +1,7 @@
 import tw from 'twin.macro';
 
+import Link from 'next/link';
+
 import axios from '~services/index';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
@@ -12,7 +14,7 @@ const Join = () => {
       return axios.get('/user/kimseokhyun');
     },
     {
-      onSuccess: (data) => {},
+      onSuccess: () => {},
     }
   );
   const { mutate: createUser } = useMutation(
@@ -23,7 +25,7 @@ const Join = () => {
       });
     },
     {
-      onSuccess: (data) => {
+      onSuccess: () => {
         queryClient.invalidateQueries(['fetchUser']);
       },
     }
@@ -35,7 +37,7 @@ const Join = () => {
       });
     },
     {
-      onSuccess: (data) => {
+      onSuccess: () => {
         queryClient.invalidateQueries(['fetchUser']);
       },
     }
@@ -45,13 +47,14 @@ const Join = () => {
       return axios.delete('/user/kimseokhyun');
     },
     {
-      onSuccess: (data) => {
+      onSuccess: () => {
         queryClient.invalidateQueries(['fetchUser']);
       },
     }
   );
   return (
-    <div css={[tw`flex flex-col items-center`]}>
+    <section css={[tw`flex flex-col items-center`]}>
+      <Link href={'/'}>RSound Logo</Link>
       <h3>{data?.data?.data?.userId}</h3>
       <button
         onClick={() => {
@@ -74,7 +77,7 @@ const Join = () => {
       >
         회원정보 삭제
       </button>
-    </div>
+    </section>
   );
 };
 
