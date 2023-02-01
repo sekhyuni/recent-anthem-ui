@@ -13,10 +13,10 @@ const Header = () => {
   return (
     <header css={[tw`relative flex flex-row items-center bg-[#0a0a0a]`]}>
       <Link
-        css={[tw`w-[150px] text-center text-lg text-white cursor-pointer`]}
+        css={[tw`w-[150px] text-center text-2xl text-white cursor-pointer`]}
         href={'/'}
       >
-        RSound Logo
+        알사운드
       </Link>
       <TabsNavigation
         currentItemId={currentItemId}
@@ -26,7 +26,7 @@ const Header = () => {
           { id: 1, name: '친구랑 노래방', path: 'friend' },
           { id: 2, name: '연인과 노래방', path: 'lover' },
         ]}
-        twCSS={tw`flex-1 justify-center`}
+        twCSS={tw`justify-center flex-1`}
       />
       <Link
         css={[
@@ -34,7 +34,7 @@ const Header = () => {
         ]}
         href={'/join'}
       >
-        Sign In
+        로그인
       </Link>
     </header>
   );

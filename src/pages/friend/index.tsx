@@ -7,7 +7,7 @@ import Layout from '~layouts/Layout';
 
 const Friend: NextPageWithLayout = () => {
   return (
-    <section css={[tw`flex flex-row justify-center`]}>
+    <section css={[tw`flex flex-col items-center flex-1`]}>
       This is Friend Page
     </section>
   );

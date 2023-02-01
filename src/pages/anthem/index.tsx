@@ -17,7 +17,7 @@ const Anthem: NextPageWithLayout = () => {
   );
 
   return (
-    <section css={[tw`flex flex-col items-center`]}>
+    <section css={[tw`flex flex-col items-center flex-1`]}>
       {data?.data?.data?.map((music: MusicType.ListResponseType['data'][0]) => (
         <div>{music.title}</div>
       ))}
