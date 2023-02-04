@@ -7,9 +7,7 @@ import Layout from '~layouts/Layout';
 
 const Lover: NextPageWithLayout = () => {
   return (
-    <section css={[tw`flex flex-col items-center flex-1`]}>
-      This is Lover Page
-    </section>
+    <section css={[tw`flex flex-col items-center`]}>This is Lover Page</section>
   );
 };
 

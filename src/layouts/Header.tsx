@@ -22,9 +22,10 @@ const Header = () => {
         currentItemId={currentItemId}
         setCurrentItemId={setCurrentItemId}
         listOfItem={[
-          { id: 0, name: '축가', path: 'anthem' },
-          { id: 1, name: '친구랑 노래방', path: 'friend' },
-          { id: 2, name: '연인과 노래방', path: 'lover' },
+          { id: 0, name: 'TOP 50', path: 'top' },
+          { id: 1, name: '축가', path: 'anthem' },
+          { id: 2, name: '친구랑 노래방', path: 'friend' },
+          { id: 3, name: '연인과 노래방', path: 'lover' },
         ]}
         twCSS={tw`justify-center flex-1`}
       />

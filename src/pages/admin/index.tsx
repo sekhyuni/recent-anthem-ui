@@ -27,15 +27,21 @@ const Admin = () => {
       }}
     >
       <div css={[tw`flex flex-row`]}>
-        <label htmlFor='titleInput'>노래 제목</label>
+        <label css={[tw`a11y-hidden`]} htmlFor='titleInput'>
+          노래 제목
+        </label>
         <input type='text' id='titleInput' ref={titleRef} />
       </div>
       <div css={[tw`flex flex-row`]}>
-        <label htmlFor='artistInput'>가수</label>
+        <label css={[tw`a11y-hidden`]} htmlFor='artistInput'>
+          가수
+        </label>
         <input type='text' id='artistInput' ref={artistRef} />
       </div>
       <div css={[tw`flex flex-row`]}>
-        <label htmlFor='albumInput'>앨범</label>
+        <label css={[tw`a11y-hidden`]} htmlFor='albumInput'>
+          앨범
+        </label>
         <input type='text' id='albumInput' ref={albumRef} />
       </div>
       <input type='submit' hidden />

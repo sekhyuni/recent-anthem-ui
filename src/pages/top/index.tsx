@@ -10,7 +10,7 @@ import SearchBar from '~components/SearchBar/SearchBar';
 import { useMusicRead } from '~hooks/useMusicRead';
 import * as MusicType from '~types/musicType';
 
-const Anthem: NextPageWithLayout = () => {
+const Top: NextPageWithLayout = () => {
   const [title, setTitle] = useState<string>('');
 
   const titleRef = useRef<HTMLInputElement | null>(null);
@@ -40,8 +40,8 @@ const Anthem: NextPageWithLayout = () => {
   );
 };
 
-Anthem.getLayout = function getLayout(page: ReactElement) {
+Top.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
-export default Anthem;
+export default Top;
