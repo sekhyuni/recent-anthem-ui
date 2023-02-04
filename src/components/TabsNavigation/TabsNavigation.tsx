@@ -1,6 +1,6 @@
 import tw, { TwStyle } from 'twin.macro';
 
-import React, { MouseEventHandler } from 'react';
+import { memo, MouseEventHandler } from 'react';
 import Link from 'next/link';
 
 export interface ITabsNavigationProps {
@@ -71,4 +71,4 @@ const TabsNavigation = ({
   );
 };
 
-export default React.memo(TabsNavigation);
+export default memo(TabsNavigation);

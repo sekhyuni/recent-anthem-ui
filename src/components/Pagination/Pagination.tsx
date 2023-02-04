@@ -1,11 +1,11 @@
 import tw, { TwStyle } from 'twin.macro';
 
-import React, { useRef, Dispatch, SetStateAction } from 'react';
+import { useRef, ComponentProps, Dispatch, SetStateAction } from 'react';
 
 import { ReactComponent as ArrowLeftIcon } from '~assets/svg/icon-arrow-left.svg';
 import { ReactComponent as ArrowRightIcon } from '~assets/svg/icon-arrow-right.svg';
 
-export interface IPaginationProps extends React.ComponentProps<'div'> {
+export interface IPaginationProps extends ComponentProps<'div'> {
   /** Page Number */
   currentPage: number;
   /** Set Page Number */

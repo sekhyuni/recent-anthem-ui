@@ -27,17 +27,17 @@ const SearchBar = forwardRef<HTMLInputElement, ISearchBarProps>(
       >
         <SearchIcon width={24} height={24} />
         <div css={[tw`px-[10px] grow`]}>
-          <label htmlFor='search' css={[tw`a11y-hidden`]}>
+          <label css={[tw`a11y-hidden`]} htmlFor={inputId ?? 'search'}>
             검색창
           </label>
           <input
-            ref={ref}
+            css={[tw`w-[100%] outline-none focus:text-gray-800`]}
             type='text'
+            ref={ref}
             id={inputId ?? 'search'}
             name={inputName ?? 'search'}
-            placeholder='검색어를 입력해주세요.'
-            css={[tw`w-[100%] outline-none focus:text-gray-800`]}
             onChange={handleChange}
+            placeholder='검색어를 입력해주세요.'
             {...rest}
           />
         </div>
