@@ -1,27 +1,27 @@
 import tw, { TwStyle } from 'twin.macro';
 
-import React, { forwardRef } from 'react';
+import { forwardRef, ReactNode, ComponentProps, ChangeEvent } from 'react';
 
 import { ReactComponent as SearchIcon } from '~assets/svg/icon-search.svg';
 
-export interface ISearchBarProps extends React.ComponentProps<'input'> {
-  /** input element의 onChange 이벤트에 할당되는 function입니다.  */
-  handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+export interface ISearchBarProps extends ComponentProps<'input'> {
+  /** Input onChange Event Handler */
+  handleChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  /** When adding a layer like the filter option, put it as a children element. */
+  children?: ReactNode;
   /** Add TwStyle to Component Root */
   twCSS?: TwStyle;
-  /** filter 옵션과 같은 layer를 추가할 경우에 children요소로 넣어주세요. */
-  children?: React.ReactNode;
 }
 
 const SearchBar = forwardRef<HTMLInputElement, ISearchBarProps>(
   (
-    { twCSS, id: inputId, name: inputName, handleChange, children, ...rest },
+    { id: inputId, name: inputName, handleChange, children, twCSS, ...rest },
     ref
   ) => {
     return (
       <div
         css={[
-          tw`flex items-center bg-white border-[1px] border-gray-100 py-[13px] px-[15px]`,
+          tw`flex flex-row items-center border-[1px] border-gray-100 py-[13px] px-[15px] bg-white`,
           twCSS,
         ]}
       >

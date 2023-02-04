@@ -12,9 +12,18 @@ export default {
 export const Default = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
+  const handleChange = () => {
+    console.log('onChange Event');
+  };
+
   return (
     <div css={[tw`w-[900px] h-[200px]`]}>
-      <SearchBar ref={inputRef} />
+      <SearchBar
+        id='inputId'
+        name='inputName'
+        ref={inputRef}
+        handleChange={handleChange}
+      />
     </div>
   );
 };
