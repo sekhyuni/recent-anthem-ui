@@ -12,7 +12,7 @@ const MusicContainer = (): JSX.Element => {
 
   const titleRef = useRef<HTMLInputElement | null>(null);
 
-  const { data: musics } = useMusicRead(title);
+  const { data: musics } = useMusicRead(title, currentPage);
 
   return (
     <>
@@ -21,6 +21,10 @@ const MusicContainer = (): JSX.Element => {
           event.preventDefault();
 
           setTitle(titleRef.current?.value as string);
+
+          if (currentPage !== 1) {
+            setCurrentPage(1);
+          }
         }}
       >
         <SearchBar ref={titleRef} placeholder='노래 제목을 입력해주세요.' />
@@ -30,7 +34,7 @@ const MusicContainer = (): JSX.Element => {
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
-        total={100}
+        total={musics?.data?.meta?.count ?? 0}
         limit={10}
       />
     </>

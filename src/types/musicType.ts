@@ -2,6 +2,10 @@ interface BaseType {
   title: string;
 }
 
+interface MetaBaseType {
+  count: number;
+}
+
 interface ResponseDataType extends BaseType {
   _id: string;
   artist: string;
@@ -9,9 +13,13 @@ interface ResponseDataType extends BaseType {
   likeCount: number;
 }
 
-export interface ListRequestType extends BaseType {}
+export interface ListRequestType extends BaseType {
+  page: number;
+  limit: number;
+}
 
 export interface ListResponseType {
+  meta: MetaBaseType;
   data: ResponseDataType[];
 }
 
