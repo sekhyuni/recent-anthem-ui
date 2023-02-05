@@ -4,6 +4,7 @@ interface BaseType {
 
 interface MetaBaseType {
   count: number;
+  message: string;
 }
 
 interface ResponseDataType extends BaseType {
