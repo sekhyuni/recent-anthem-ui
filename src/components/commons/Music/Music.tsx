@@ -5,8 +5,8 @@ import { ReactNode, ComponentProps } from 'react';
 export interface IMusicProps extends ComponentProps<'li'> {
   rank?: number;
   title: string;
-  album: string;
   artist: string;
+  album: string;
   likeCount?: number;
   right?: ReactNode;
 }
@@ -14,8 +14,8 @@ export interface IMusicProps extends ComponentProps<'li'> {
 const Music = ({
   rank,
   title,
-  album,
   artist,
+  album,
   likeCount,
   right,
 }: IMusicProps): JSX.Element => {

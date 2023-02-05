@@ -19,16 +19,16 @@ const MusicList = ({ listOfMusic }: IMusicLists): JSX.Element => {
           _id,
           rank,
           title,
-          album,
           artist,
+          album,
           likeCount,
         }: MusicType.ListResponseType['data'][0]) => (
           <Music
             key={_id}
             rank={rank as number}
             title={title}
-            album={album}
             artist={artist}
+            album={album}
             likeCount={likeCount as number}
           />
         )

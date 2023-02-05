@@ -7,14 +7,16 @@ import MusicList from '~components/presenters/MusicList/MusicList';
 import { useMusicRead } from '~hooks/useMusicRead';
 
 const MusicContainer = (): JSX.Element => {
-  const [title, setTitle] = useState<string>('');
+  const [filter, setFilter] = useState<string>('title');
+  const [keyword, setKeyword] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  const titleRef = useRef<HTMLInputElement | null>(null);
+  const keywordRef = useRef<HTMLInputElement | null>(null);
 
   const { data: listOfMusic } = useMusicRead(
     ['fetchMusic'],
-    title,
+    filter,
+    keyword,
     currentPage
   );
 
@@ -24,14 +26,14 @@ const MusicContainer = (): JSX.Element => {
         onSubmit={(event: FormEvent<HTMLFormElement>) => {
           event.preventDefault();
 
-          setTitle(titleRef.current?.value as string);
+          setKeyword(keywordRef.current?.value as string);
 
           if (currentPage !== 1) {
             setCurrentPage(1);
           }
         }}
       >
-        <SearchBar ref={titleRef} placeholder='노래 제목을 입력해주세요.' />
+        <SearchBar ref={keywordRef} placeholder='노래 제목을 입력해주세요.' />
         <input type='submit' hidden />
       </form>
       <MusicList listOfMusic={listOfMusic} />

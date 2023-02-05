@@ -5,14 +5,16 @@ import TopMusicService from '~services/topMusicService';
 
 export const useMusicRead = (
   queryKey: string[],
-  title: MusicType.ListRequestType['title'],
+  filter: string,
+  keyword: string,
   currentPage: MusicType.ListRequestType['page']
 ) => {
   return useQuery(
-    [queryKey, title, currentPage],
+    [queryKey, filter, keyword, currentPage],
     () => {
       const params: MusicType.ListRequestType = {
-        title,
+        filter,
+        keyword,
         page: currentPage,
         limit: 10,
       };

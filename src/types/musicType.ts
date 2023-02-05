@@ -15,7 +15,9 @@ interface ResponseDataType extends BaseType {
   likeCount?: number;
 }
 
-export interface ListRequestType extends BaseType {
+export interface ListRequestType {
+  filter: string;
+  keyword: string;
   page: number;
   limit: number;
 }
