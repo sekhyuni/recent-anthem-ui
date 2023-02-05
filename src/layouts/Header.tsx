@@ -3,11 +3,11 @@ import tw from 'twin.macro';
 import { useState } from 'react';
 import Link from 'next/link';
 
-import TabsNavigation from '~components/TabsNavigation/TabsNavigation';
+import TabsNavigation from '~components/commons/TabsNavigation/TabsNavigation';
 
 export interface IHeader extends React.ComponentProps<'header'> {}
 
-const Header = () => {
+const Header = (): JSX.Element => {
   const [currentItemId, setCurrentItemId] = useState<number>(0);
 
   return (

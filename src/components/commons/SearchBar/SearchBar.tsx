@@ -5,19 +5,19 @@ import { forwardRef, ReactNode, ComponentProps, ChangeEvent } from 'react';
 import { ReactComponent as SearchIcon } from '~assets/svg/icon-search.svg';
 
 export interface ISearchBarProps extends ComponentProps<'input'> {
-  /** Input onChange Event Handler */
+  /** input onChange event handler */
   handleChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  /** When adding a layer like the filter option, put it as a children element. */
-  children?: ReactNode;
-  /** Add TwStyle to Component Root */
+  /** add a layer like the filter option */
+  right?: ReactNode;
+  /** add TwStyle to component root */
   twCSS?: TwStyle;
 }
 
 const SearchBar = forwardRef<HTMLInputElement, ISearchBarProps>(
   (
-    { id: inputId, name: inputName, handleChange, children, twCSS, ...rest },
+    { id: inputId, name: inputName, handleChange, right, twCSS, ...rest },
     ref
-  ) => {
+  ): JSX.Element => {
     return (
       <div
         css={[
@@ -41,7 +41,7 @@ const SearchBar = forwardRef<HTMLInputElement, ISearchBarProps>(
             {...rest}
           />
         </div>
-        {children}
+        {right}
       </div>
     );
   }

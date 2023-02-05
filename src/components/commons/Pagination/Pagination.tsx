@@ -6,17 +6,17 @@ import { ReactComponent as ArrowLeftIcon } from '~assets/svg/icon-arrow-left.svg
 import { ReactComponent as ArrowRightIcon } from '~assets/svg/icon-arrow-right.svg';
 
 export interface IPaginationProps extends ComponentProps<'div'> {
-  /** Page Number */
+  /** page number */
   currentPage: number;
-  /** Set Page Number */
+  /** set page number */
   setCurrentPage: Dispatch<SetStateAction<number>>;
-  /** Total Row Count */
+  /** total row count */
   total: number;
-  /** Row Count Per Page */
+  /** row count per page */
   limit: number;
-  /** Page Length (Default : 5) */
+  /** page length (default : 5) */
   lengthOfPage?: number;
-  /** Add TwStyle to Component Root */
+  /** add TwStyle to component root */
   twCSS?: TwStyle;
 }
 

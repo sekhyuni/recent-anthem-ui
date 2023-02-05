@@ -5,7 +5,7 @@ import { useRef, FormEvent } from 'react';
 import { useMusicCreate } from '~hooks/useMusicCreate';
 import * as MusicType from '~types/musicType';
 
-const Admin = () => {
+const Admin = (): JSX.Element => {
   const titleRef = useRef<HTMLInputElement | null>(null);
   const artistRef = useRef<HTMLInputElement | null>(null);
   const albumRef = useRef<HTMLInputElement | null>(null);

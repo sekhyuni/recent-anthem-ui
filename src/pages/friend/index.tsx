@@ -5,11 +5,9 @@ import type { ReactElement } from 'react';
 import type { NextPageWithLayout } from '~pages/_app';
 import Layout from '~layouts/Layout';
 
-const Friend: NextPageWithLayout = () => {
+const Friend: NextPageWithLayout = (): JSX.Element => {
   return (
-    <section css={[tw`flex flex-col items-center`]}>
-      This is Friend Page
-    </section>
+    <section css={[tw`flex flex-col items-center`]}>준비중입니다.</section>
   );
 };
 

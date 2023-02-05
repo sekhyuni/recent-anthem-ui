@@ -1,15 +1,15 @@
 import './button.css';
 
 export interface IButtonProps {
-  /** Button Contents */
+  /** button contents */
   label: string;
-  /** Button Size */
+  /** button size */
   size?: 'small' | 'medium' | 'large';
-  /** Background Color */
+  /** background color */
   backgroundColor?: string;
-  /** Is Primary */
+  /** is primary */
   primary?: boolean;
-  /** Click Handler */
+  /** click handler */
   onClick?: () => void;
 }
 
@@ -19,7 +19,7 @@ const Button = ({
   primary = false,
   backgroundColor,
   ...rest
-}: IButtonProps) => {
+}: IButtonProps): JSX.Element => {
   const mode = primary
     ? 'storybook-button--primary'
     : 'storybook-button--secondary';

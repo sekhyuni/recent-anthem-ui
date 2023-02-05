@@ -5,9 +5,9 @@ import type { ReactElement } from 'react';
 import type { NextPageWithLayout } from '~pages/_app';
 import Layout from '~layouts/Layout';
 
-const Lover: NextPageWithLayout = () => {
+const Lover: NextPageWithLayout = (): JSX.Element => {
   return (
-    <section css={[tw`flex flex-col items-center`]}>This is Lover Page</section>
+    <section css={[tw`flex flex-col items-center`]}>준비중입니다.</section>
   );
 };
 

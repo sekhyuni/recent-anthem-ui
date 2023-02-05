@@ -4,19 +4,19 @@ import { memo, MouseEventHandler } from 'react';
 import Link from 'next/link';
 
 export interface ITabsNavigationProps {
-  /** Active Item Id */
+  /** active item id */
   currentItemId: number;
-  /** Set Active Item Id */
+  /** set active item id */
   setCurrentItemId: (currentItemId: number) => void;
-  /** Item Information */
+  /** item information */
   listOfItem: { id: number; name: string; path: string }[];
-  /** Navigation Size */
+  /** navigation size */
   size?: 'normal' | 'small';
-  /** Base Path (It should start with '/') */
+  /** base path (It should start with '/') */
   basePath?: string;
-  /** Click Handler */
+  /** click handler */
   onClick?: MouseEventHandler<HTMLAnchorElement>;
-  /** Add TwStyle to Component Root */
+  /** add TwStyle to component root */
   twCSS?: TwStyle;
 }
 

@@ -3,6 +3,7 @@ interface BaseType {
 }
 
 interface ResponseDataType extends BaseType {
+  _id: string;
   artist: string;
   album: string;
   likeCount: number;

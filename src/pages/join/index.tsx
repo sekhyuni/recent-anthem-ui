@@ -5,7 +5,7 @@ import Link from 'next/link';
 import axios from '~services/index';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
-const Join = () => {
+const Join = (): JSX.Element => {
   const queryClient = useQueryClient();
 
   const { data } = useQuery(
