@@ -8,20 +8,29 @@ import { AxiosResponse } from 'axios';
 import * as MusicType from '~types/musicType';
 
 export interface IMusicLists extends ComponentProps<'ul'> {
-  musics: AxiosResponse<any, any> | undefined;
+  listOfMusic: AxiosResponse<any, any> | undefined;
 }
 
-const MusicList = ({ musics }: IMusicLists): JSX.Element => {
+const MusicList = ({ listOfMusic }: IMusicLists): JSX.Element => {
   return (
-    <ul css={[tw`flex flex-col w-[700px]`]}>
-      {musics?.data?.data?.map(
+    <ul css={[tw`flex flex-col w-[1000px]`]}>
+      {listOfMusic?.data?.data?.map(
         ({
           _id,
+          rank,
           title,
           album,
           artist,
+          likeCount,
         }: MusicType.ListResponseType['data'][0]) => (
-          <Music key={_id} title={title} album={album} artist={artist} />
+          <Music
+            key={_id}
+            rank={rank as number}
+            title={title}
+            album={album}
+            artist={artist}
+            likeCount={likeCount as number}
+          />
         )
       )}
     </ul>

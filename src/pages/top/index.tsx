@@ -2,12 +2,12 @@ import type { ReactElement } from 'react';
 
 import type { NextPageWithLayout } from '~pages/_app';
 import Layout from '~layouts/Layout';
-import MusicContainer from '~src/containers/MusicContainer';
+import TopMusicContainer from '~src/containers/TopMusicContainer';
 
 const Top: NextPageWithLayout = (): JSX.Element => {
   return (
     <section>
-      <MusicContainer />
+      <TopMusicContainer />
     </section>
   );
 };

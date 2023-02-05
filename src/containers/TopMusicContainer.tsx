@@ -6,14 +6,14 @@ import MusicList from '~components/presenters/MusicList/MusicList';
 
 import { useMusicRead } from '~hooks/useMusicRead';
 
-const MusicContainer = (): JSX.Element => {
+const TopMusicContainer = (): JSX.Element => {
   const [title, setTitle] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const titleRef = useRef<HTMLInputElement | null>(null);
 
   const { data: listOfMusic } = useMusicRead(
-    ['fetchMusic'],
+    ['fetchTopMusic'],
     title,
     currentPage
   );
@@ -45,4 +45,4 @@ const MusicContainer = (): JSX.Element => {
   );
 };
 
-export default MusicContainer;
+export default TopMusicContainer;
