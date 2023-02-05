@@ -6,7 +6,6 @@ export interface IMusicProps extends ComponentProps<'li'> {
   title: string;
   album: string;
   artist: string;
-  /** add a layer like the filter option */
   right?: ReactNode;
 }
 

@@ -1,6 +1,6 @@
 import tw, { TwStyle } from 'twin.macro';
 
-import { memo, MouseEventHandler } from 'react';
+import { MouseEventHandler } from 'react';
 import Link from 'next/link';
 
 export interface ITabsNavigationProps {
@@ -53,7 +53,7 @@ const TabsNavigation = ({
                 <span
                   css={[
                     tw`text-white`,
-                    currentItemId === item.id && tw`text-[#98FB98]`,
+                    currentItemId === item.id && tw`text-sky-200`,
                     size === 'normal'
                       ? tw`text-[18px] leading-[32px]`
                       : tw`text-[16px] leading-[26px]`,
@@ -71,4 +71,4 @@ const TabsNavigation = ({
   );
 };
 
-export default memo(TabsNavigation);
+export default TabsNavigation;
