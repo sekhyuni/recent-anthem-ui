@@ -36,6 +36,7 @@ const TopMusicContainer = (): JSX.Element => {
         <SearchBar ref={keywordRef} placeholder='노래 제목을 입력해주세요.' />
         <input type='submit' hidden />
       </form>
+      <h1>{listOfMusic?.data?.data[0].crawling_time} 기준</h1>
       <MusicList listOfMusic={listOfMusic} />
       <Pagination
         currentPage={currentPage}
