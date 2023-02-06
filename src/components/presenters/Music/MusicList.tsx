@@ -2,7 +2,7 @@ import tw from 'twin.macro';
 
 import { ComponentProps } from 'react';
 
-import Music from '~components/commons/Music/Music';
+import Music from '~components/presenters/Music/Music';
 
 import { AxiosResponse } from 'axios';
 import * as MusicType from '~types/musicType';

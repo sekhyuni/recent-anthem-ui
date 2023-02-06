@@ -2,7 +2,7 @@ import { useState, useRef, FormEvent } from 'react';
 
 import Pagination from '~components/commons/Pagination/Pagination';
 import SearchBar from '~components/commons/SearchBar/SearchBar';
-import MusicList from '~components/presenters/MusicList/MusicList';
+import MusicList from '~components/presenters/Music/MusicList';
 
 import { useMusicRead } from '~hooks/useMusicRead';
 
