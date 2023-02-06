@@ -3,7 +3,7 @@ import * as MusicType from '~types/musicType';
 import MusicService from '~services/musicService';
 import TopMusicService from '~services/topMusicService';
 
-export const useMusicRead = (
+export const useReadMusic = (
   queryKey: string[],
   filter: string,
   keyword: string,

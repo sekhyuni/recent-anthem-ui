@@ -2,7 +2,7 @@ import tw from 'twin.macro';
 
 import { useRef, FormEvent } from 'react';
 
-import { useMusicCreate } from '~hooks/useMusicCreate';
+import { useCreateMusic } from '~hooks/useCreateMusic';
 import * as MusicType from '~types/musicType';
 
 const Admin = (): JSX.Element => {
@@ -10,7 +10,7 @@ const Admin = (): JSX.Element => {
   const artistRef = useRef<HTMLInputElement | null>(null);
   const albumRef = useRef<HTMLInputElement | null>(null);
 
-  const { mutate: createMusic } = useMusicCreate();
+  const { mutate: createMusic } = useCreateMusic();
 
   return (
     <form

@@ -4,7 +4,7 @@ import Pagination from '~components/commons/Pagination/Pagination';
 import SearchBar from '~components/commons/SearchBar/SearchBar';
 import MusicList from '~components/presenters/Music/MusicList';
 
-import { useMusicRead } from '~hooks/useMusicRead';
+import { useReadMusic } from '~hooks/useReadMusic';
 
 const TopMusicContainer = (): JSX.Element => {
   const [filter, setFilter] = useState<string>('title');
@@ -13,7 +13,7 @@ const TopMusicContainer = (): JSX.Element => {
 
   const keywordRef = useRef<HTMLInputElement | null>(null);
 
-  const { data: listOfMusic } = useMusicRead(
+  const { data: listOfMusic } = useReadMusic(
     ['fetchTopMusic'],
     filter,
     keyword,
