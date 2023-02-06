@@ -24,6 +24,7 @@ export const useReadMusic = (
     },
     {
       refetchOnWindowFocus: false,
+      retry: false,
       onSuccess: (data) => {},
     }
   );
