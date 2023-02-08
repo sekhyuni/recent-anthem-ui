@@ -1,3 +1,7 @@
+import styled from '@emotion/styled';
+
+// import { useRouter } from 'next/router';
+
 import { createColumnHelper } from '@tanstack/react-table';
 
 import Table from './Table';
@@ -7,74 +11,107 @@ export default {
   component: Table,
 };
 
-type Person = {
-  firstName: string;
-  lastName: string;
-  age: number;
-  visits: number;
-  status: string;
-  progress: number;
+type Dataset = {
+  sequence: number;
+  dataset_id: number;
+  name: string;
+  register: string;
+  createdAt: string;
 };
 
-const defaultData: Person[] = [
+const data: Dataset[] = [
   {
-    firstName: 'tanner',
-    lastName: 'linsley',
-    age: 24,
-    visits: 100,
-    status: 'In Relationship',
-    progress: 50,
+    sequence: 1,
+    dataset_id: 1,
+    name: 'coffee_test1',
+    register: 'admin',
+    createdAt: '2023-01-25 10:50:31',
   },
   {
-    firstName: 'tandy',
-    lastName: 'miller',
-    age: 40,
-    visits: 40,
-    status: 'Single',
-    progress: 80,
+    sequence: 2,
+    dataset_id: 2,
+    name: 'coffee_test2',
+    register: 'admin',
+    createdAt: '2023-01-25 10:50:31',
   },
   {
-    firstName: 'joe',
-    lastName: 'dirte',
-    age: 45,
-    visits: 20,
-    status: 'Complicated',
-    progress: 10,
+    sequence: 3,
+    dataset_id: 3,
+    name: 'coffee_test3',
+    register: 'admin',
+    createdAt: '2023-01-25 10:50:31',
+  },
+  {
+    sequence: 4,
+    dataset_id: 4,
+    name: 'coffee_test4',
+    register: 'admin',
+    createdAt: '2023-01-25 10:50:31',
   },
 ];
 
-const columnHelper = createColumnHelper<Person>();
+const StyledTableWrapper = styled.div`
+  .table-container > thead {
+    border-top: 1px solid #c8ced3;
+  }
 
-const columns = [
-  columnHelper.accessor('firstName', {
-    cell: (info) => info.getValue(),
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor((row) => row.lastName, {
-    id: 'lastName',
-    cell: (info) => <i>{info.getValue()}</i>,
-    header: () => <span>Last Name</span>,
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor('age', {
-    header: () => 'Age',
-    cell: (info) => info.renderValue(),
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor('visits', {
-    header: () => <span>Visits</span>,
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor('status', {
-    header: 'Status',
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor('progress', {
-    header: 'Profile Progress',
-    footer: (info) => info.column.id,
-  }),
-];
+  .table-container > tbody > tr > td {
+    :nth-child(2) {
+      text-align: start;
+    }
+  }
+`;
 
-export const Default = () => (
-  <Table data={[...defaultData]} columns={columns} />
-);
+export const Default = () => {
+  // const router = useRouter();
+
+  const columnHelper = createColumnHelper<Dataset>();
+
+  const columns = [
+    columnHelper.accessor('sequence', {
+      header: () => <span>순서</span>,
+      cell: (info) => <i>{info.getValue()}</i>,
+      footer: (info) => info.column.id,
+    }),
+    columnHelper.accessor('name', {
+      header: () => <span>데이터셋 명</span>,
+      cell: (info) => <i>{info.getValue()}</i>,
+      footer: (info) => info.column.id,
+    }),
+    columnHelper.accessor('register', {
+      header: () => <span>등록자</span>,
+      cell: (info) => <i>{info.getValue()}</i>,
+      footer: (info) => info.column.id,
+    }),
+    columnHelper.accessor('createdAt', {
+      header: () => <span>등록일자</span>,
+      cell: (info) => <i>{info.getValue()}</i>,
+      footer: (info) => info.column.id,
+    }),
+  ];
+
+  const objOfColWidth: { [colIdx: number]: string } = {
+    0: '50px',
+    1: '',
+    2: '50px',
+    3: '150px',
+  };
+
+  return (
+    <StyledTableWrapper>
+      <Table
+        data={data}
+        columns={columns}
+        handleTableRowClick={(rowData: Dataset) => {
+          // router.push({
+          //   pathname: 'detail',
+          //   query: {
+          //     dataset_id: rowData.dataset_id,
+          //   },
+          // });
+        }}
+        objOfColWidth={objOfColWidth}
+      />
+    </StyledTableWrapper>
+  );
+};
