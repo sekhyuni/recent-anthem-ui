@@ -1,8 +1,8 @@
 import tw from 'twin.macro';
 
-import { ReactNode, ComponentProps } from 'react';
+import { ReactNode } from 'react';
 
-export interface IMusicProps extends ComponentProps<'li'> {
+export interface IMusicProps {
   rank?: number;
   title: string;
   artist: string;

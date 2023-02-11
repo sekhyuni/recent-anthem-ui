@@ -8,7 +8,6 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-
 import { v4 as uuid } from 'uuid';
 
 export interface ITableProps<TData> extends ComponentProps<'table'> {
@@ -23,6 +22,7 @@ const Table = <TData extends { [key: string]: any }>({
   columns,
   handleTableRowClick,
   objOfColWidth,
+  ...rest
 }: ITableProps<TData>): JSX.Element => {
   const table = useReactTable({
     data,
@@ -31,7 +31,7 @@ const Table = <TData extends { [key: string]: any }>({
   });
 
   return (
-    <StyledTable role='grid' className='table-container'>
+    <StyledTable role='grid' className='table-container' {...rest}>
       <colgroup>
         {columns.map((_, idx) => (
           <col key={uuid()} width={objOfColWidth[idx]} />
@@ -88,7 +88,6 @@ const Table = <TData extends { [key: string]: any }>({
 const StyledTable = styled.table`
   table-layout: auto;
   width: 100%;
-  color: #002b69;
   box-sizing: content-box;
   line-height: 1.5;
 `;

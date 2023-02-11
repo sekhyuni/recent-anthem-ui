@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 import { createColumnHelper } from '@tanstack/react-table';
 
@@ -55,15 +55,17 @@ const StyledTableWrapper = styled.div`
     border-top: 1px solid #c8ced3;
   }
 
-  .table-container > tbody > tr > td {
-    :nth-child(2) {
-      text-align: start;
+  .table-container > tbody {
+    & > tr > td {
+      :nth-child(2) {
+        text-align: start;
+      }
     }
   }
 `;
 
 export const Default = () => {
-  // const router = useRouter();
+  const router = useRouter();
 
   const columnHelper = createColumnHelper<Dataset>();
 
@@ -103,12 +105,12 @@ export const Default = () => {
         data={data}
         columns={columns}
         handleTableRowClick={(rowData: Dataset) => {
-          // router.push({
-          //   pathname: 'detail',
-          //   query: {
-          //     dataset_id: rowData.dataset_id,
-          //   },
-          // });
+          router.push({
+            pathname: 'detail',
+            query: {
+              dataset_id: rowData.dataset_id,
+            },
+          });
         }}
         objOfColWidth={objOfColWidth}
       />

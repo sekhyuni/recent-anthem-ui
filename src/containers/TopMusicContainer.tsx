@@ -2,7 +2,7 @@ import { useState, useRef, FormEvent } from 'react';
 
 import Pagination from '~components/commons/Pagination/Pagination';
 import SearchBar from '~components/commons/SearchBar/SearchBar';
-import MusicList from '~components/presenters/Music/MusicList';
+import MusicTable from '~components/presenters/Music/MusicTable';
 
 import { useReadMusic } from '~hooks/useReadMusic';
 
@@ -37,7 +37,7 @@ const TopMusicContainer = (): JSX.Element => {
         <input type='submit' hidden />
       </form>
       <h1>{listOfMusic?.data?.data[0].crawling_time} 기준</h1>
-      <MusicList listOfMusic={listOfMusic} />
+      <MusicTable data={listOfMusic?.data?.data ?? []} />
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

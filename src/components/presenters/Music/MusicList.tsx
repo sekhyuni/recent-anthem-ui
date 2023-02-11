@@ -1,13 +1,11 @@
 import tw from 'twin.macro';
 
-import { ComponentProps } from 'react';
+import { AxiosResponse } from 'axios';
 
 import Music from '~components/presenters/Music/Music';
-
-import { AxiosResponse } from 'axios';
 import * as MusicType from '~types/musicType';
 
-export interface IMusicLists extends ComponentProps<'ul'> {
+export interface IMusicLists {
   listOfMusic: AxiosResponse<any, any> | undefined;
 }
 
