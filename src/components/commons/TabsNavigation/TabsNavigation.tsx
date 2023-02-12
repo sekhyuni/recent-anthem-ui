@@ -53,7 +53,7 @@ const TabsNavigation = ({
                 <span
                   css={[
                     tw`text-white`,
-                    currentItemId === item.id && tw`text-sky-200`,
+                    currentItemId === item.id && tw`text-sky-300`,
                     size === 'normal'
                       ? tw`text-[18px] leading-[32px]`
                       : tw`text-[16px] leading-[26px]`,

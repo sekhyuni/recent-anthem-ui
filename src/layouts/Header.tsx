@@ -22,7 +22,7 @@ const Header = (): JSX.Element => {
         currentItemId={currentItemId}
         setCurrentItemId={setCurrentItemId}
         listOfItem={[
-          { id: 0, name: 'TOP 50', path: 'top' },
+          { id: 0, name: '실시간 TOP', path: 'top' },
           { id: 1, name: '축가', path: 'anthem' },
           { id: 2, name: '친구랑 노래방', path: 'friend' },
           { id: 3, name: '연인과 노래방', path: 'lover' },

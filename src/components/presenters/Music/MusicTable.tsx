@@ -25,7 +25,7 @@ const MusicTable = ({ data }: IMusicTable) => {
       footer: (info) => info.column.id,
     }),
     columnHelper.accessor('title', {
-      header: () => <span>노래 제목</span>,
+      header: () => <span>곡</span>,
       cell: (info) => <span>{info.getValue()}</span>,
       footer: (info) => info.column.id,
     }),
@@ -73,7 +73,7 @@ const StyledTableWrapper = styled.div`
   .table-container > thead {
     border-top: 1px solid #c8ced3;
     & > tr > th {
-      :nth-child(2) {
+      :nth-of-type(2) {
         text-align: start;
       }
     }
@@ -81,7 +81,7 @@ const StyledTableWrapper = styled.div`
 
   .table-container > tbody {
     & > tr > td {
-      :nth-child(2) {
+      :nth-of-type(2) {
         text-align: start;
       }
     }

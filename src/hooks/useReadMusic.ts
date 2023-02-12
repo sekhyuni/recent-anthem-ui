@@ -17,7 +17,7 @@ export const useReadMusic = (
         filter,
         keyword,
         page: currentPage,
-        limit: 10,
+        limit: 25,
       };
       return queryKey.includes('fetchMusic')
         ? MusicService.list(params)

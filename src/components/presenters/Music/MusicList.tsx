@@ -11,7 +11,7 @@ export interface IMusicLists {
 
 const MusicList = ({ listOfMusic }: IMusicLists): JSX.Element => {
   return (
-    <ul css={[tw`flex flex-col w-[1000px]`]}>
+    <ul css={[tw`w-[1000px]`]}>
       {listOfMusic?.data?.data?.map(
         ({
           _id,

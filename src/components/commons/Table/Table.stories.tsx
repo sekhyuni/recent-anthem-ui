@@ -57,7 +57,7 @@ const StyledTableWrapper = styled.div`
 
   .table-container > tbody {
     & > tr > td {
-      :nth-child(2) {
+      :nth-of-type(2) {
         text-align: start;
       }
     }

@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <>
       <Header />
-      <main css={[tw`flex flex-col min-h-[calc(100%-160px)]`]}>
+      <main css={[tw`min-h-[calc(100%-160px)]`]}>
         {/* <div css={[tw`flex flex-row`]}>
           <aside css={[tw`flex flex-col items-center w-[250px]`]}>
             This is Aside Area

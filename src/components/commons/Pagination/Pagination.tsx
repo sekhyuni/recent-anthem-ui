@@ -67,7 +67,7 @@ const Pagination = ({
                 css={[
                   tw`w-[32px] h-[32px] py-[8px] mr-[4px] rounded-[3px] text-[12px] leading-[16px] font-medium text-[#696f8c]`,
                   currentPage === idx + 1 &&
-                    tw`bg-sky-200 font-semibold text-black`,
+                    tw`bg-sky-300 font-semibold text-black`,
                 ]}
                 key={idx + 1}
                 onClick={() => {

@@ -105,10 +105,10 @@ const StyledTh = styled.th`
 
 const StyledTbodytr = styled.tr<{ $isLink: boolean | undefined }>`
   border-top: 1px solid #c8ced3;
-  :first-child {
+  :first-of-type {
     border-top: 1px solid #111;
   }
-  :last-child {
+  :last-of-type {
     border-bottom: 1px solid #111;
   }
   cursor: ${({ $isLink }) => ($isLink ? 'pointer' : 'none')};

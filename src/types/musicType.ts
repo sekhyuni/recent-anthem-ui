@@ -5,6 +5,7 @@ interface BaseType {
 interface MetaBaseType {
   count: number;
   message: string;
+  crawling_time?: string;
 }
 
 interface ResponseDataType extends BaseType {
