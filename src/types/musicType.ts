@@ -21,6 +21,7 @@ export interface ListRequestType {
   keyword: string;
   page: number;
   limit: number;
+  time?: string;
 }
 
 export interface ListResponseType {

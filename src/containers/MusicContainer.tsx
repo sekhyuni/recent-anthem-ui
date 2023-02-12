@@ -1,5 +1,7 @@
 import { useState, useRef, FormEvent } from 'react';
 
+import { AxiosResponse } from 'axios';
+
 import Pagination from '~components/commons/Pagination/Pagination';
 import SearchBar from '~components/commons/SearchBar/SearchBar';
 import MusicTable from '~components/presenters/Music/MusicTable';
@@ -12,11 +14,22 @@ const MusicContainer = (): JSX.Element => {
 
   const keywordRef = useRef<HTMLInputElement | null>(null);
 
+  const onSuccess = (data: AxiosResponse<any, any>) => {
+    // Success Handling
+  }
+  const onError = (error: any) => {
+    // Error Handling
+  }
+
   const { data: listOfMusic } = useReadMusic(
+    {
+      onSuccess,
+      onError,
+    },
     ['fetchMusic'],
     filter,
     keyword,
-    currentPage
+    currentPage,
   );
 
   return (

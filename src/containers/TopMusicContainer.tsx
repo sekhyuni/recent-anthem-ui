@@ -2,6 +2,9 @@ import tw from 'twin.macro';
 
 import { useState, useRef, FormEvent } from 'react';
 
+import { AxiosResponse } from 'axios';
+import { format } from 'date-fns'
+
 import { ReactComponent as ArrowDownIcon } from '~assets/svg/icon-arrow-down.svg';
 import Dropdown from '~components/commons/Dropdown/Dropdown';
 import Pagination from '~components/commons/Pagination/Pagination';
@@ -12,28 +15,43 @@ import { useOnClickOutside } from '~hooks/useOnClickOutside';
 import { useReadMusic } from '~hooks/useReadMusic';
 
 const TopMusicContainer = (): JSX.Element => {
+  const currentTime = format(new Date(), 'yyyyMMddHH');
+
   const [filter, setFilter] = useState<string>('title');
   const [keyword, setKeyword] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isOpenDropdown, setIsOpenDropdown] = useState<boolean>(false);
-  const [time, setTime] = useState<string>('');
+  const [time, setTime] = useState<string>(currentTime);
 
   const keywordRef = useRef<HTMLInputElement | null>(null);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
+  const onSuccess = (data: AxiosResponse<any, any>) => {
+    // Success Handling
+  }
+  const onError = (error: any) => {
+    if (error.response.data.meta.count === 0) {
+      if (confirm('선택하신 시간대에 데이터가 없습니다. 가장 최신 데이터를 가져올까요?')) {
+        // 가장 최신 데이터 API 요청
+      }
+    }
+  }
+
   const { data: listOfMusic, isLoading } = useReadMusic(
+    {
+      onSuccess,
+      onError,
+    },
     ['fetchTopMusic'],
     filter,
     keyword,
-    currentPage
+    currentPage,
+    time,
   );
 
-  const crawlingTime = listOfMusic?.data?.meta?.crawling_time ?? '';
-
-  const currentTime = new Date().getHours();
   const listOfCanSelectTime = Array.from(
-    { length: currentTime + 1 },
+    { length: Number(currentTime.slice(-2)) + 1 },
     (_, idx) => `${String(idx).padStart(2, '0')}:00`
   ).reverse();
 
@@ -64,7 +82,7 @@ const TopMusicContainer = (): JSX.Element => {
         ) : (
           <div css={[tw`relative`]}>
             <div id='time-wrapper'>
-              <Time crawlingTime={crawlingTime} />
+              <Time time={time} />
               <button
                 ref={buttonRef}
                 onClick={() => {
@@ -79,7 +97,7 @@ const TopMusicContainer = (): JSX.Element => {
                 ref={dropdownRef}
                 listOfItem={listOfCanSelectTime}
                 setItem={(item: string) => {
-                  setTime(item.slice(0, 2));
+                  setTime(`${currentTime.slice(0, 8)}${item.slice(0, 2)}`);
                 }}
                 setIsOpenDropdown={setIsOpenDropdown}
               />
