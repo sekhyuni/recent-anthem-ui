@@ -49,10 +49,10 @@ const TabsNavigation = ({
             }}
           >
             <Link href={`${basePath}/${item.path}`} passHref legacyBehavior>
-              <a css={[tw`px-[30px]`]} onClick={onClick}>
+              <a css={[tw`block px-[30px]`]} onClick={onClick}>
                 <span
                   css={[
-                    tw`text-white`,
+                    tw`block text-white`,
                     currentItemId === item.id && tw`text-sky-300`,
                     size === 'normal'
                       ? tw`text-[18px] leading-[32px]`
