@@ -34,8 +34,6 @@ export const useReadMusic = (
         : TopMusicService.list(params);
     },
     {
-      refetchOnWindowFocus: false,
-      retry: false,
       onSuccess,
       onError,
     }

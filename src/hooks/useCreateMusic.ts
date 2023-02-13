@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 
-import * as MusicType from '~types/musicType';
 import MusicService from '~services/musicService';
+import * as MusicType from '~types/musicType';
 
 export const useCreateMusic = () => {
   return useMutation(

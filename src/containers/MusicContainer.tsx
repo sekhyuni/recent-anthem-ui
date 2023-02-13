@@ -16,10 +16,10 @@ const MusicContainer = (): JSX.Element => {
 
   const onSuccess = (data: AxiosResponse<any, any>) => {
     // Success Handling
-  }
+  };
   const onError = (error: any) => {
     // Error Handling
-  }
+  };
 
   const { data: listOfMusic } = useReadMusic(
     {
@@ -29,7 +29,7 @@ const MusicContainer = (): JSX.Element => {
     ['fetchMusic'],
     filter,
     keyword,
-    currentPage,
+    currentPage
   );
 
   return (

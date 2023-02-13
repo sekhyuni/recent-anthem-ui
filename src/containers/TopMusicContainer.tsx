@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 import { useState, useRef, FormEvent } from 'react';
 
 import { AxiosResponse } from 'axios';
-import { format } from 'date-fns'
+import { format } from 'date-fns';
 
 import { ReactComponent as ArrowDownIcon } from '~assets/svg/icon-arrow-down.svg';
 import Dropdown from '~components/commons/Dropdown/Dropdown';
@@ -29,14 +29,10 @@ const TopMusicContainer = (): JSX.Element => {
 
   const onSuccess = (data: AxiosResponse<any, any>) => {
     // Success Handling
-  }
+  };
   const onError = (error: any) => {
-    // if (error.response.data.meta.count === 0) {
-    //   if (confirm('선택하신 시간대에 데이터가 없습니다. 가장 최신 데이터를 가져올까요?')) {
-    //     // 가장 최신 데이터 API 요청
-    //   }
-    // }
-  }
+    // Error Handling
+  };
 
   const { data: listOfMusic, isLoading } = useReadMusic(
     {
@@ -47,7 +43,7 @@ const TopMusicContainer = (): JSX.Element => {
     filter,
     keyword,
     currentPage,
-    time,
+    time
   );
 
   const listOfCanSelectTime = Array.from(
