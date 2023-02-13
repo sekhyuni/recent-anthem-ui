@@ -6,7 +6,7 @@ const isProd = process.env.NODE_ENV === 'production';
 export const path = 'http://localhost:8081';
 
 const axios = Axios.create({
-  baseURL: isProd ? path : '',
+  baseURL: path
 });
 
 export default axios;

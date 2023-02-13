@@ -1,8 +1,8 @@
 import type { ReactElement } from 'react';
 
-import type { NextPageWithLayout } from '~pages/_app';
+import MusicContainer from '~containers/MusicContainer';
 import Layout from '~layouts/Layout';
-import MusicContainer from '~src/containers/MusicContainer';
+import type { NextPageWithLayout } from '~pages/_app';
 
 const Anthem: NextPageWithLayout = (): JSX.Element => {
   return (

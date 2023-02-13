@@ -16,7 +16,7 @@ export const useReadMusic = (
   queryKey: string[],
   filter: string,
   keyword: string,
-  currentPage: MusicType.ListRequestType['page'],
+  currentPage: number,
   time?: string
 ) => {
   return useQuery(
