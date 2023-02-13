@@ -1,6 +1,6 @@
 import { useEffect, RefObject } from 'react';
 
-export const useOnClickOutside = (
+export const useClickOutside = (
   dropdownRef: RefObject<HTMLDivElement>,
   buttonRef: RefObject<HTMLButtonElement>,
   setIsOpenDropdown: (isOpenDropdown: boolean) => void

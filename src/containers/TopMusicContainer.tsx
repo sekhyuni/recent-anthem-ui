@@ -11,7 +11,7 @@ import Pagination from '~components/commons/Pagination/Pagination';
 import SearchBar from '~components/commons/SearchBar/SearchBar';
 import MusicTable from '~components/presenters/Music/MusicTable';
 import Time from '~components/presenters/Time';
-import { useOnClickOutside } from '~hooks/useOnClickOutside';
+import { useClickOutside } from '~hooks/useClickOutside';
 import { useReadMusic } from '~hooks/useReadMusic';
 
 const TopMusicContainer = (): JSX.Element => {
@@ -31,11 +31,11 @@ const TopMusicContainer = (): JSX.Element => {
     // Success Handling
   }
   const onError = (error: any) => {
-    if (error.response.data.meta.count === 0) {
-      if (confirm('선택하신 시간대에 데이터가 없습니다. 가장 최신 데이터를 가져올까요?')) {
-        // 가장 최신 데이터 API 요청
-      }
-    }
+    // if (error.response.data.meta.count === 0) {
+    //   if (confirm('선택하신 시간대에 데이터가 없습니다. 가장 최신 데이터를 가져올까요?')) {
+    //     // 가장 최신 데이터 API 요청
+    //   }
+    // }
   }
 
   const { data: listOfMusic, isLoading } = useReadMusic(
@@ -55,7 +55,7 @@ const TopMusicContainer = (): JSX.Element => {
     (_, idx) => `${String(idx).padStart(2, '0')}:00`
   ).reverse();
 
-  useOnClickOutside(dropdownRef, buttonRef, setIsOpenDropdown);
+  useClickOutside(dropdownRef, buttonRef, setIsOpenDropdown);
 
   return (
     <>
