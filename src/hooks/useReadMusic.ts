@@ -13,7 +13,7 @@ export const useReadMusic = (
     onSuccess: (data: AxiosResponse<any, any>) => void;
     onError: (error: any) => void;
   },
-  queryKey: string[],
+  queryKey: string,
   filter: string,
   keyword: string,
   currentPage: number,
@@ -29,7 +29,7 @@ export const useReadMusic = (
         limit: 25,
         time,
       };
-      return queryKey.includes('fetchMusic')
+      return queryKey === 'fetchMusic'
         ? MusicService.list(params)
         : TopMusicService.list(params);
     },
