@@ -10,6 +10,7 @@ export interface IPaginationProps extends ComponentProps<'div'> {
   currentPage: number;
   /** set page number */
   setCurrentPage: Dispatch<SetStateAction<number>>;
+  handleChangePage: (currentPage: number) => void;
   /** total row count */
   total: number;
   /** row count per page */
@@ -23,6 +24,7 @@ export interface IPaginationProps extends ComponentProps<'div'> {
 const Pagination = ({
   currentPage,
   setCurrentPage,
+  handleChangePage,
   total,
   limit,
   lengthOfPage = 5,
@@ -51,6 +53,7 @@ const Pagination = ({
           }
 
           setCurrentPage((prev: number): number => prev - 1);
+          handleChangePage(currentPage - 1);
         }}
       >
         <ArrowLeftIcon fillOpacity={currentPage === 1 ? '0.3' : '1'} />
@@ -72,6 +75,7 @@ const Pagination = ({
                 key={idx + 1}
                 onClick={() => {
                   setCurrentPage(idx + 1);
+                  handleChangePage(idx + 1);
                 }}
               >
                 {idx + 1}
@@ -89,6 +93,7 @@ const Pagination = ({
           }
 
           setCurrentPage((prev: number): number => prev + 1);
+          handleChangePage(currentPage + 1);
         }}
       >
         <ArrowRightIcon

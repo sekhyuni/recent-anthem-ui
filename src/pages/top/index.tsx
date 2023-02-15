@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react';
+import { NextPageContext } from 'next';
 
-import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query';
+import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { format } from 'date-fns';
 
 import TopMusicContainer from '~containers/TopMusicContainer';
@@ -9,19 +10,27 @@ import type { NextPageWithLayout } from '~pages/_app';
 import TopMusicService from '~services/topMusicService';
 import * as MusicType from '~types/musicType';
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ query }: NextPageContext) {
+  let filter: string = (query.filter as string) || 'title';
+  let keyword: string = (query.keyword as string) || '';
+  let currentPage: number = Number(query.currentPage) || 1;
+  let time: string = (query.time as string) || format(new Date(), 'yyyyMMddHH');
+
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(['fetchInitTopMusic'], () => {
-    const params: MusicType.ListRequestType = {
-      filter: 'title',
-      keyword: '',
-      page: 1,
-      limit: 25,
-      time: format(new Date(), 'yyyyMMddHH'),
-    };
-    return TopMusicService.list(params);
-  });
+  await queryClient.prefetchQuery(
+    ['fetchTopMusic', filter, keyword, currentPage, time],
+    () => {
+      const params: MusicType.ListRequestType = {
+        filter,
+        keyword,
+        page: currentPage,
+        limit: 25,
+        time,
+      };
+      return TopMusicService.list(params);
+    }
+  );
 
   return {
     props: {
@@ -43,4 +52,3 @@ Top.getLayout = function getLayout(page: ReactElement) {
 };
 
 export default Top;
-

@@ -1,9 +1,8 @@
 import tw from 'twin.macro';
 
 import { useState, useRef, FormEvent } from 'react';
+import { useRouter } from 'next/router';
 
-import { AxiosResponse } from 'axios';
-import { useQuery } from '@tanstack/react-query';
 import { format } from 'date-fns';
 
 import { ReactComponent as ArrowDownIcon } from '~assets/svg/icon-arrow-down.svg';
@@ -14,15 +13,17 @@ import MusicTable from '~components/presenters/Music/MusicTable';
 import Time from '~components/presenters/Time';
 import { useClickOutside } from '~hooks/useClickOutside';
 import { useReadMusic } from '~hooks/useReadMusic';
-import TopMusicService from '~services/topMusicService';
-import * as MusicType from '~types/musicType';
 
 const TopMusicContainer = (): JSX.Element => {
+  const router = useRouter();
+
   const currentTime = format(new Date(), 'yyyyMMddHH');
 
   const [filter, setFilter] = useState<string>('title');
   const [keyword, setKeyword] = useState<string>('');
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<number>(
+    Number(router.query.currentPage) || 1
+  );
   const [isOpenDropdown, setIsOpenDropdown] = useState<boolean>(false);
   const [time, setTime] = useState<string>(currentTime);
 
@@ -30,35 +31,24 @@ const TopMusicContainer = (): JSX.Element => {
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
-  const onSuccess = (data: AxiosResponse<any, any>) => {
+  const onSuccess = (data: any) => {
     // Success Handling
   };
   const onError = (error: any) => {
     // Error Handling
   };
 
-  const { data: listOfMusic, isLoading } = useQuery(['fetchInitTopMusic'], () => {
-    const params: MusicType.ListRequestType = {
-      filter: 'title',
-      keyword: '',
-      page: 1,
-      limit: 25,
-      time: format(new Date(), 'yyyyMMddHH'),
-    };
-    return TopMusicService.list(params);
-  });
-
-  // const { data: listOfMusic, isLoading } = useReadMusic(
-  //   {
-  //     onSuccess,
-  //     onError,
-  //   },
-  //   'fetchTopMusic',
-  //   filter,
-  //   keyword,
-  //   currentPage,
-  //   time
-  // );
+  const { data: listOfMusic, isLoading } = useReadMusic(
+    {
+      onSuccess,
+      onError,
+    },
+    'fetchTopMusic',
+    filter,
+    keyword,
+    currentPage,
+    time
+  );
 
   const listOfCanSelectTime = Array.from(
     { length: Number(currentTime.slice(-2)) + 1 },
@@ -119,6 +109,18 @@ const TopMusicContainer = (): JSX.Element => {
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        handleChangePage={(currentPage: number) => {
+          router.push({
+            pathname: router.pathname,
+            query: {
+              filter,
+              keyword,
+              currentPage,
+              limit: 25,
+              time,
+            },
+          });
+        }}
         total={listOfMusic?.meta?.count ?? 0}
         limit={25}
         twCSS={tw`my-[20px]`}

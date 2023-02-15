@@ -11,6 +11,8 @@ import {
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
+import queryClientConfig from '~constants/queryClientConfig';
+
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
@@ -21,9 +23,7 @@ type AppPropsWithLayout = AppProps & {
 
 export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
-  const [queryClient] = useState(() => new QueryClient({
-    defaultOptions: { queries: { refetchOnWindowFocus: false, retry: false } },
-  }));
+  const [queryClient] = useState(() => new QueryClient(queryClientConfig));
 
   return getLayout(
     <QueryClientProvider client={queryClient}>

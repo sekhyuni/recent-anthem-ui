@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import { useQuery } from '@tanstack/react-query';
 
 import * as MusicType from '~types/musicType';
@@ -10,7 +9,7 @@ export const useReadMusic = (
     onSuccess,
     onError,
   }: {
-    onSuccess: (data: AxiosResponse<any, any>) => void;
+    onSuccess: (data: any) => void;
     onError: (error: any) => void;
   },
   queryKey: string,
