@@ -10,6 +10,7 @@ export interface IPaginationProps extends ComponentProps<'div'> {
   currentPage: number;
   /** set page number */
   setCurrentPage: Dispatch<SetStateAction<number>>;
+  /** add page to url for SSR */
   handleChangePage: (currentPage: number) => void;
   /** total row count */
   total: number;
