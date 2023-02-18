@@ -111,7 +111,7 @@ const StyledTbodytr = styled.tr<{ $isLink: boolean | undefined }>`
   :last-of-type {
     border-bottom: 1px solid #111;
   }
-  cursor: ${({ $isLink }) => ($isLink ? 'pointer' : 'none')};
+  cursor: ${({ $isLink }) => $isLink && 'pointer'};
 `;
 
 const StyledTd = styled.td`

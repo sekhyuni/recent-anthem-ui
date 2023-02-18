@@ -53,16 +53,16 @@ const MusicTable = ({ data }: IMusicTable) => {
       <Table
         data={data}
         columns={columns}
-        handleTableRowClick={(
-          rowData: MusicType.ListResponseType['data'][0]
-        ) => {
-          router.push({
-            pathname: 'detail',
-            query: {
-              _id: rowData._id,
-            },
-          });
-        }}
+        // handleTableRowClick={(
+        //   rowData: MusicType.ListResponseType['data'][0]
+        // ) => {
+        //   router.push({
+        //     pathname: 'detail',
+        //     query: {
+        //       _id: rowData._id,
+        //     },
+        //   });
+        // }}
         objOfColWidth={objOfColWidth}
       />
     </StyledTableWrapper>
