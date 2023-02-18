@@ -1,5 +1,7 @@
 import tw from 'twin.macro';
 
+import React from 'react';
+
 export interface IFooterProps extends React.ComponentProps<'footer'> {}
 
 const Footer = (): JSX.Element => {

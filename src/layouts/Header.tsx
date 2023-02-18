@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 
 import TabsNavigation from '~components/commons/TabsNavigation/TabsNavigation';

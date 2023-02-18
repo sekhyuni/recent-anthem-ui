@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { css, SerializedStyles } from '@emotion/react';
 
-import { forwardRef, ComponentProps } from 'react';
+import React, { forwardRef, ComponentProps } from 'react';
 
 import clearInputForwardedRefValue from '~utils/clearInputForwardedRefValue';
 
