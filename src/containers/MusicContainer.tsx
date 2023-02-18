@@ -26,7 +26,7 @@ const MusicContainer = (): JSX.Element => {
       onSuccess,
       onError,
     },
-    ['fetchMusic'],
+    'fetchMusic',
     filter,
     keyword,
     currentPage

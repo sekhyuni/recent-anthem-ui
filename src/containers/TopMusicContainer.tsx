@@ -114,7 +114,7 @@ const TopMusicContainer = (): JSX.Element => {
 
   useEffect(() => {
     keywordRef.current!.value = (router.query.keyword as string) || '';
-  }, []);
+  }, [router.query.keyword]);
 
   return (
     <>
@@ -135,9 +135,9 @@ const TopMusicContainer = (): JSX.Element => {
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
-        handleChangePage={handleChangePage}
         total={listOfMusic?.meta?.count ?? 0}
         limit={25}
+        handleChangePage={handleChangePage}
         twCSS={tw`my-[20px]`}
       />
     </>

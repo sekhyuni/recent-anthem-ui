@@ -10,14 +10,14 @@ export interface IPaginationProps extends ComponentProps<'div'> {
   currentPage: number;
   /** set page number */
   setCurrentPage: Dispatch<SetStateAction<number>>;
-  /** add page to url for SSR */
-  handleChangePage: (currentPage: number) => void;
   /** total row count */
   total: number;
   /** row count per page */
   limit: number;
   /** page length (default : 5) */
   lengthOfPage?: number;
+  /** add page to url for SSR */
+  handleChangePage?: (currentPage: number) => void;
   /** add TwStyle to component root */
   twCSS?: TwStyle;
 }
@@ -25,10 +25,10 @@ export interface IPaginationProps extends ComponentProps<'div'> {
 const Pagination = ({
   currentPage,
   setCurrentPage,
-  handleChangePage,
   total,
   limit,
   lengthOfPage = 5,
+  handleChangePage,
   twCSS,
   ...rest
 }: IPaginationProps): JSX.Element => {
@@ -54,7 +54,9 @@ const Pagination = ({
           }
 
           setCurrentPage((prev: number): number => prev - 1);
-          handleChangePage(currentPage - 1);
+          if (typeof handleChangePage === 'function') {
+            handleChangePage(currentPage - 1);
+          }
         }}
       >
         <ArrowLeftIcon fillOpacity={currentPage === 1 ? '0.3' : '1'} />
@@ -76,7 +78,9 @@ const Pagination = ({
                 key={idx + 1}
                 onClick={() => {
                   setCurrentPage(idx + 1);
-                  handleChangePage(idx + 1);
+                  if (typeof handleChangePage === 'function') {
+                    handleChangePage(idx + 1);
+                  }
                 }}
               >
                 {idx + 1}
@@ -94,7 +98,9 @@ const Pagination = ({
           }
 
           setCurrentPage((prev: number): number => prev + 1);
-          handleChangePage(currentPage + 1);
+          if (typeof handleChangePage === 'function') {
+            handleChangePage(currentPage + 1);
+          }
         }}
       >
         <ArrowRightIcon

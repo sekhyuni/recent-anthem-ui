@@ -21,7 +21,7 @@ const Music = ({
 }: IMusicProps): JSX.Element => {
   return (
     <li css={[tw`flex flex-row items-center h-[60px]`]}>
-      <img></img>
+      <img alt=''></img>
       {typeof rank !== 'undefined' && <div>랭킹: {rank}&nbsp;</div>}
       <div>제목: {title}&nbsp;</div>
       <div>가수: {artist}&nbsp;</div>
