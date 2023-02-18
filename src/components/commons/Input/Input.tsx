@@ -85,6 +85,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     );
   }
 );
+Input.displayName = 'Input';
 
 const statusStyle: { [key: string]: SerializedStyles } = {
   default: css`

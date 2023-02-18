@@ -46,5 +46,6 @@ const SearchBar = forwardRef<HTMLInputElement, ISearchBarProps>(
     );
   }
 );
+SearchBar.displayName = 'SearchBar';
 
 export default SearchBar;
