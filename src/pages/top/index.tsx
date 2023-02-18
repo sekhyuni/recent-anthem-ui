@@ -2,19 +2,21 @@ import type { ReactElement } from 'react';
 import { NextPageContext } from 'next';
 
 import { dehydrate, QueryClient } from '@tanstack/react-query';
-import { format } from 'date-fns';
 
 import TopMusicContainer from '~containers/TopMusicContainer';
 import Layout from '~layouts/Layout';
 import type { NextPageWithLayout } from '~pages/_app';
 import TopMusicService from '~services/topMusicService';
 import * as MusicType from '~types/musicType';
+import getAlwaysKoreanCurrentTime from '~utils/getAlwaysKoreanCurrentTime';
 
 export async function getServerSideProps({ query }: NextPageContext) {
+  const currentTime = getAlwaysKoreanCurrentTime();
+
   let filter: string = (query.filter as string) || 'title';
   let keyword: string = (query.keyword as string) || '';
   let currentPage: number = Number(query.currentPage) || 1;
-  let time: string = (query.time as string) || format(new Date(), 'yyyyMMddHH');
+  let time: string = (query.time as string) || currentTime;
 
   const queryClient = new QueryClient();
 

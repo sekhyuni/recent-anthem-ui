@@ -3,19 +3,18 @@ import tw from 'twin.macro';
 import { useState, useRef, FormEvent, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-import { format } from 'date-fns';
-
 import Pagination from '~components/commons/Pagination/Pagination';
 import SearchBar from '~components/commons/SearchBar/SearchBar';
 import MusicTable from '~components/presenters/Music/MusicTable';
 import TimeArea from '~components/presenters/Time/TimeArea';
 import { useClickOutside } from '~hooks/useClickOutside';
 import { useReadMusic } from '~hooks/useReadMusic';
+import getAlwaysKoreanCurrentTime from '~utils/getAlwaysKoreanCurrentTime';
 
 const TopMusicContainer = (): JSX.Element => {
   const router = useRouter();
 
-  const currentTime = format(new Date(), 'yyyyMMddHH');
+  const currentTime = getAlwaysKoreanCurrentTime();
 
   const [filter, setFilter] = useState<string>('title');
   // useQuery의 query param에서 keyword를 observing을 하기 위해 추가로 state 선언
